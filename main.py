@@ -1,7 +1,5 @@
-import turtle
-import numpy as np
 import random
-from turtle import Turtle, Screen
+from turtle import Screen
 from bars_ import Bars
 import time
 from ball import Ball
@@ -24,10 +22,8 @@ screen.onkeypress(key='Down', fun=bar.move_down_1)
 screen.onkeypress(key="w", fun=bar.move_up_2)
 screen.onkeypress(key='s', fun=bar.move_down_2)
 
-"""print(ball.heading())"""
-
-game_on = True
-screen_delay_factor = 100
+game_on: bool = True
+screen_delay_factor: float = 100.0
 while game_on:
     ball.ball_move()
     if 0 <= ball.heading() < 5:
@@ -36,7 +32,7 @@ while game_on:
         ball.setheading(370)
     ball.speed('fastest')
     time.sleep(0.02*(0.01*screen_delay_factor))
-    screen.delay(0.3)
+    screen.delay(1)
     screen.update()
     if ball.ycor() >= 350 or ball.ycor() <= -350:
         ball.bounce()
@@ -44,7 +40,8 @@ while game_on:
     print(int(bar.bars[0].xcor()), int(bar.bars[0].ycor()))
     print(int(bar.bars[1].xcor()), int(bar.bars[1].ycor()))"""
     if int(ball.xcor()) in range(-463, -457) and int(ball.ycor()) \
-            in range(int(bar.bars[1].ycor()) - 56, int(bar.bars[1].ycor()) + 56):
+            in range(int(bar.bars[1].ycor()) -
+                     56, int(bar.bars[1].ycor()) + 56):
         print(ball.xcor(), ball.ycor())
         print(bar.bars[1].xcor(), bar.bars[1].ycor())
         print("True")
@@ -61,7 +58,8 @@ while game_on:
             screen_delay_factor = 0.1
 
     if int(ball.xcor()) in range(457, 463) and int(ball.ycor()) \
-            in range(int(bar.bars[0].ycor()) - 56, int(bar.bars[0].ycor()) + 56):
+            in range(int(bar.bars[0].ycor()) -
+                     56, int(bar.bars[0].ycor()) + 56):
         print(ball.xcor(), ball.ycor())
         print(bar.bars[0].xcor(), bar.bars[0].ycor())
         print("False")
